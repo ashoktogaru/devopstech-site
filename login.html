@@ -54,7 +54,7 @@ async function login() {
   let email = document.getElementById("email").value;
   let password = document.getElementById("password").value;
 
-  let url = "https://script.google.com/macros/s/AKfycbzcE1C8W3652UgImvCFM8SyeEl3uRI1DmQTaXXDxa7B4HOOzobcan5pvrF_jW5ukqdpXA/exec" + email + "&password=" + password;
+  let url = "https://script.google.com/macros/s/AKfycbzcE1C8W3652UgImvCFM8SyeEl3uRI1DmQTaXXDxa7B4HOOzobcan5pvrF_jW5ukqdpXA/exec?email=" + email + "&password=" + password;
 
   try {
     let res = await fetch(url);
