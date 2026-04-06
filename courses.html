@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Courses</title>
+  <title>Course</title>
   <style>
     body {
       background: #0f172a;
       color: white;
-      font-family: Arial;
       text-align: center;
+      font-family: Arial;
     }
 
-    .card {
-      background: #1e293b;
-      margin: 20px auto;
-      padding: 20px;
-      width: 300px;
+    iframe {
+      margin-top: 20px;
       border-radius: 10px;
-    }
-
-    a {
-      color: #3b82f6;
-      text-decoration: none;
     }
   </style>
 
@@ -33,20 +25,18 @@ if (!localStorage.getItem("user")) {
 </head>
 <body>
 
-<h2 id="welcome"></h2>
+<h1>AWS DevOps Course</h1>
 
-<div class="card">
-  <h3>AWS DevOps Course</h3>
-  <p>Full Practical Training</p>
-  <a href="course.html">Start Learning</a>
-</div>
+<iframe width="80%" height="400"
+  src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+  allowfullscreen>
+</iframe>
+
+<br><br>
 
 <button onclick="logout()">Logout</button>
 
 <script>
-document.getElementById("welcome").innerText =
-  "Welcome " + localStorage.getItem("user");
-
 function logout() {
   localStorage.removeItem("user");
   window.location.href = "login.html";
