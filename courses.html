@@ -4,12 +4,11 @@
   <title>Courses</title>
   <style>
     body {
-      font-family: Arial;
       background: #0f172a;
       color: white;
+      font-family: Arial;
       text-align: center;
     }
-
     .course {
       background: #1e293b;
       margin: 20px auto;
@@ -17,22 +16,40 @@
       width: 300px;
       border-radius: 10px;
     }
-
-    a {
-      color: #3b82f6;
-      text-decoration: none;
+    button {
+      padding: 10px;
+      margin-top: 10px;
     }
   </style>
+
+<script>
+if (!localStorage.getItem("user")) {
+  window.location.href = "login.html";
+}
+</script>
+
 </head>
 <body>
 
-<h1>My Courses</h1>
+<h2 id="welcome"></h2>
 
 <div class="course">
-  <h2>AWS DevOps Course</h2>
+  <h3>AWS DevOps Course</h3>
   <p>Beginner to Advanced</p>
   <a href="devops-course.html">Go to Course</a>
 </div>
+
+<button onclick="logout()">Logout</button>
+
+<script>
+document.getElementById("welcome").innerText =
+  "Welcome " + localStorage.getItem("user");
+
+function logout() {
+  localStorage.removeItem("user");
+  window.location.href = "login.html";
+}
+</script>
 
 </body>
 </html>
