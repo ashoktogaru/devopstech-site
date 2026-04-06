@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       background: #0f172a;
@@ -10,44 +11,68 @@
       font-family: Arial;
       padding-top: 100px;
     }
+
+    .box {
+      background: #1e293b;
+      padding: 30px;
+      width: 300px;
+      margin: auto;
+      border-radius: 10px;
+    }
+
     input {
+      width: 90%;
       padding: 10px;
       margin: 10px;
+      border-radius: 5px;
+      border: none;
     }
+
     button {
       padding: 10px 20px;
       background: #3b82f6;
-      color: white;
       border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-<h2>Student Login</h2>
+<div class="box">
+  <h2>Student Login</h2>
 
-<input type="text" id="email" placeholder="Email"><br>
-<input type="password" id="password" placeholder="Password"><br>
+  <input type="text" id="email" placeholder="Email"><br>
+  <input type="password" id="password" placeholder="Password"><br>
 
-<button onclick="login()">Login</button>
+  <button onclick="login()">Login</button>
+</div>
 
 <script>
-function login() {
-  var email = document.getElementById("email").value;
-  var password = document.getElementById("password").value;
+async function login() {
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
 
-  var url = "https://script.google.com/macros/s/AKfycbzcE1C8W3652UgImvCFM8SyeEl3uRI1DmQTaXXDxa7B4HOOzobcan5pvrF_jW5ukqdpXA/exec" + email + "&password=" + password;
+  let url = "https://script.google.com/macros/s/AKfycbzcE1C8W3652UgImvCFM8SyeEl3uRI1DmQTaXXDxa7B4HOOzobcan5pvrF_jW5ukqdpXA/exec" + email + "&password=" + password;
 
-  fetch(url)
-    .then(res => res.text())
-    .then(data => {
-      if (data === "success") {
-        localStorage.setItem("user", email);
-        window.location.href = "courses.html";
-      } else {
-        alert("Invalid login");
-      }
-    });
+  try {
+    let res = await fetch(url);
+    let data = await res.text();
+
+    console.log(data);
+
+    if (data.trim() === "success") {
+      localStorage.setItem("user", email);
+      window.location.href = "courses.html";
+    } else {
+      alert("Invalid email or password");
+    }
+
+  } catch (err) {
+    alert("Error connecting to server");
+    console.log(err);
+  }
 }
 </script>
 
