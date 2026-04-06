@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+</head>
+<body style="text-align:center; font-family:Arial;">
+
+<h2>Student Login</h2>
+
+<input type="text" id="email" placeholder="Email"><br><br>
+<input type="password" id="password" placeholder="Password"><br><br>
+
+<button onclick="login()">Login</button>
+
+<script>
+function login() {
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+
+  var url = "https://script.google.com/macros/s/AKfycbzcE1C8W3652UgImvCFM8SyeEl3uRI1DmQTaXXDxa7B4HOOzobcan5pvrF_jW5ukqdpXA/exec" + email + "&password=" + password;
+
+  fetch(url)
+    .then(res => res.text())
+    .then(data => {
+      if (data === "success") {
+        window.location.href = "devops-course.html";
+      } else {
+        alert("Invalid login");
+      }
+    });
+}
+</script>
+
+</body>
+</html>
